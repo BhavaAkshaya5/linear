@@ -7,74 +7,9 @@ Original file is located at
     https://colab.research.google.com/drive/1Xu6kPHXiuw9onGM1Hoj7SffP-U31K13J
 """
 
-import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression
-import pickle
-
-sc = pd.read_csv('Final Exam Score (1).csv')
-
-
-sc.head()
-
-sc.isnull().sum()
-
-sc.dropna(inplace=True)
-
-sc.isnull().sum()
-
-sc.info()
-
-from sklearn.preprocessing import LabelEncoder
-x=LabelEncoder()
-sc['Enter_Your_Name']=x.fit_transform(sc['Enter Your Name'])
-
-x1=LabelEncoder()
-sc['Usage of mobile phone while studying']=x.fit_transform(sc['Usage of mobile phone while studying'])
-
-x2=LabelEncoder()
-sc['Participation in doubt sessions']=x.fit_transform(sc['Participation in doubt sessions'])
-
-sc.tail()
-
-LR=LinearRegression()
-
-# Clean percentage column
-sc['Percentage of Attendance'] = sc['Percentage of Attendance'].str.replace('%', '').astype(float)
-
-# Define input and output variables
-ind = sc[['Enter_Your_Name', 'What is the dialy hours of study?', 'Usage of mobile phone while studying',
-          'Sleep Hours before exam?', 'Percentage of Attendance', 'Participation in doubt sessions']]
-dep = sc['Final Score']
-
-# Fit the model
-LR.fit(ind, dep)
-
-with open('Final_scorepickle.pkl','wb') as f:
-  pickle.dump(LR,f)
-print("model trained and saved as 'Final_Score.pkl'")
-
-LR.predict([[25,5,3,8,80,1]])
-
-from sklearn.metrics import mean_squared_error
-val=LR.predict(ind)
-# Use a regression metric like mean_squared_error
-# You can choose other regression metrics like mean_absolute_error or r2_score
-mse = mean_squared_error(dep, val)
-print(f"Mean Squared Error: {mse}")
-
-n=int(input("Enter_Your_Name"))
-hr=int(input("What is the dialy hours of study?"))
-mo=int(input("Usage of mobile phone while studying"))
-sl=int(input("Sleep Hours before exam?"))
-at=int(input("Percentage of Attendance"))
-d=int(input("Participation in doubt sessions"))
-
-ans=LR.predict([[n,hr,mo,sl,at,d]])
-ans
 
 import joblib
-joblib.dump(LR, '/content/Final_scorepickle.pkl')
+joblib.dump(LR, '/content/Final_scorepickle(1).pkl')
 
 import streamlit as st
 import pandas as pd
