@@ -12,7 +12,8 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import pickle
 
-sc=pd.read_csv('/content/Final Exam Score (1).csv')
+sc = pd.read_csv('Final Exam Score (1).csv')
+
 
 sc.head()
 
