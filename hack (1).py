@@ -89,3 +89,5 @@ with st.container():
         st.error("⚠️ Please enter a valid percentage value for attendance.")
 
     st.markdown("</div>", unsafe_allow_html=True)
+
+st.launch()
