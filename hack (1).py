@@ -9,47 +9,20 @@ Original file is located at
 
 
 import joblib
-joblib.dump(LR, '/content/Final_scorepickle(1).pkl')
+joblib.dump(LR, 'Final_scorepickle.pkl')
 
 import streamlit as st
 import pandas as pd
 import joblib
 
 # Load the trained model
-model = joblib.load("model.pkl")  # Ensure 'model.pkl' is present in the same directory
+model = joblib.load("Final_scorepickle.pkl")  # Ensure 'model.pkl' is present in the same directory
 
 # Streamlit page setup
 st.set_page_config(
     page_title="🎓 Final Score Predictor",
     layout="centered"
 )
-
-# CSS for styling
-st.markdown("""
-    <style>
-        body {
-            background-image: url("https://images.unsplash.com/photo-1557683316-973673baf926");
-            background-size: cover;
-        }
-        .main {
-            background-color: rgba(255, 255, 255, 0.90);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-        .stButton > button {
-            background-color: #0d6efd;
-            color: white;
-            padding: 0.5em 2em;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-        .stButton > button:hover {
-            background-color: #003566;
-            color: white;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 with st.container():
     st.markdown("<div class='main'>", unsafe_allow_html=True)
@@ -89,5 +62,3 @@ with st.container():
         st.error("⚠️ Please enter a valid percentage value for attendance.")
 
     st.markdown("</div>", unsafe_allow_html=True)
-
-st.launch()
