@@ -73,7 +73,7 @@ ans=LR.predict([[n,hr,mo,sl,at,d]])
 ans
 
 import joblib
-joblib.dump(LR, 'model.pkl')
+joblib.dump(LR, '/content/Final_scorepickle.pkl')
 
 import streamlit as st
 import pandas as pd
