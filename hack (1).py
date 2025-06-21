@@ -50,7 +50,7 @@ dep = sc['Final Score']
 # Fit the model
 LR.fit(ind, dep)
 
-with open('/content/Final_scorepickle.pkl','wb') as f:
+with open('Final_scorepickle.pkl','wb') as f:
   pickle.dump(LR,f)
 print("model trained and saved as 'Final_Score.pkl'")
 
